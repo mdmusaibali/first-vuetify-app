@@ -1,24 +1,23 @@
 <template>
   <div class="home">
-    <the-add-task-field></the-add-task-field>
+    <add-task-field></add-task-field>
     <task-list v-if="tasks.length !== 0" :tasks="tasks"></task-list>
     <no-tasks v-else></no-tasks>
   </div>
 </template>
 
 <script>
-import { TheAddTaskField, TaskList, NoTasks } from "./../components";
+import { AddTaskField, TaskList, NoTasks } from "./../components";
 export default {
   name: "Home",
   components: {
-    TheAddTaskField,
+    AddTaskField,
     TaskList,
     NoTasks,
   },
   computed: {
     tasks() {
-      console.log("TASKS LOADED");
-      return this.$store.getters.tasks;
+      return this.$store.getters.tasksFiltered;
     },
   },
 };
