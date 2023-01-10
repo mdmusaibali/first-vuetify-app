@@ -5,10 +5,12 @@
       :class="{
         'blue lighten-5': task.done,
       }"
+      class="white"
+      :ripple="false"
     >
       <template>
         <v-list-item-action>
-          <v-checkbox :value="task.done"></v-checkbox>
+          <v-checkbox :input-value="task.done"></v-checkbox>
         </v-list-item-action>
 
         <v-list-item-content>
@@ -30,6 +32,12 @@
         <v-list-item-action>
           <task-menu :task="task"></task-menu>
         </v-list-item-action>
+
+        <v-list-item-action v-if="isSorting">
+          <v-btn icon color="primary" class="handle">
+            <v-icon>mdi-drag-horizontal</v-icon>
+          </v-btn>
+        </v-list-item-action>
       </template>
     </v-list-item>
     <v-divider></v-divider>
@@ -44,6 +52,11 @@ export default {
   components: {
     TaskMenu,
   },
+  computed: {
+    isSorting() {
+      return this.$store.getters.isSorting;
+    },
+  },
   filters: {
     niceDate(value) {
       return format(new Date(value), "MMM d");
@@ -56,4 +69,11 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style lang="scss">
+.sortable-ghost {
+  opacity: 0;
+}
+.sortable-drag {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+</style>

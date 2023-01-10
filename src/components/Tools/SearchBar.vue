@@ -6,6 +6,7 @@
     prepend-inner-icon="mdi-magnify"
     clearable
     filled
+    :disabled="isSorting"
     class="mt-1 expanding-search"
     :class="{ closed: searchClosed && !search }"
     @focus="searchClosed = false"
@@ -27,6 +28,9 @@ export default {
       set(value) {
         this.$store.dispatch("setSearch", value);
       },
+    },
+    isSorting() {
+      return this.$store.getters.isSorting;
     },
   },
 };

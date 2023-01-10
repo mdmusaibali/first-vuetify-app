@@ -6,6 +6,7 @@ import GlobalSnackbar from "./Global/GlobalSnackbar.vue";
 import DeleteDialog from "./Todo/dialogs/DeleteDialog.vue";
 import SearchBar from "./Tools/SearchBar.vue";
 import LiveDateTime from "./Tools/LiveDateTime.vue";
+import ButtonDoneSorting from "./Todo/ButtonDoneSorting.vue";
 export {
   AddTaskField,
   TaskList,
@@ -15,4 +16,5 @@ export {
   DeleteDialog,
   SearchBar,
   LiveDateTime,
+  ButtonDoneSorting,
 };

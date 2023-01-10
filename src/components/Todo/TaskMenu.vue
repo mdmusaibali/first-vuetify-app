@@ -81,6 +81,17 @@ export default {
           this.dialogs.delete = true;
         },
       },
+      {
+        title: "Sort",
+        icon: "mdi-drag-horizontal",
+        click() {
+          if (!this.$store.state.tasks.search) {
+            this.$store.dispatch("toggleSorting");
+          } else {
+            this.$store.dispatch("showSnack", "Cannot sort while searching");
+          }
+        },
+      },
     ],
   }),
   methods: {
@@ -92,10 +103,10 @@ export default {
       this.items[i].click.call(this);
     },
     editTask(editedTask) {
-      console.log(editedTask);
       this.$store.dispatch("editTask", editedTask);
       this.dialogs.edit = false;
       this.$store.dispatch("showSnack", "Task Edited");
+      this.$vuetify.goTo(0, { duration: 0 });
     },
     saveDate(date) {
       console.log("DATE", date);

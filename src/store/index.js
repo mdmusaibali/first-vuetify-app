@@ -10,4 +10,12 @@ export default new Vuex.Store({
     tasks: tasks,
     snackbar: snackbar,
   },
+  state: {
+    appTitle: process.env.VUE_APP_TITLE,
+  },
+  getters: {
+    appTitle(state) {
+      return state.appTitle;
+    },
+  },
 });
